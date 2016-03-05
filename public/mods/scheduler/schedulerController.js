@@ -85,10 +85,10 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
         }; // create method ends
 
         $scope.delete = function(visit_schedules) {
-            var visit = visit_schedules.visit;
+            var title = visit_schedules.title;
             $http.delete('/api/v1/secure/visitSchedules/' + visit_schedules._id).success(function(response) {
                     refresh();
-                    growl.info(parse("visitSchedule [%s]<br/>Deleted successfully", visit));
+                    growl.info(parse("visitSchedule [%s]<br/>Deleted successfully", title));
                 })
                 .error(function(data, status) {
                     growl.error("Error deleting visitSchedule");
@@ -108,11 +108,6 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
                 }); // http put visitSchedule ends
         }; // update method ends
 
-        $scope.cancel = function() {
-
-            $scope.visit_schedules = "";
-            $location.path("/s/");
-        }
 
         $scope.getUser = function() {
 

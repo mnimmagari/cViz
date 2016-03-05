@@ -16,10 +16,10 @@
           </div> -->
 
         <!--hard code Visit title (should be taken from visit form)-->
-        <!-- <div class="form-group">
+        <div class="form-group">
           <input type="text" class="form-control" placeholder="visit title" id="visit" name="visit"
             ng-model="visit_schedules.visit"  />
-          </div> -->
+          </div>
 
         <!-- session start date and end date -->
         <div class="form-group">
@@ -37,25 +37,25 @@
 
         <!-- session type -->
         <div class="form-group">
-          <select  class="form-control"  id="type" ng-model="session.type" ng-options="t.session for t in type ">
+          <select  class="form-control"  id="type" ng-model="visit_schedules.session.type" ng-options="t.session for t in type ">
             <option value="">---select session type---</option>
           </select>
         </div>
 
-        <!--title have to pic from User -->
+        <!--title  -->
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="title" id="title"
-            ng-model="visit_schedules.session.title"  />
+          <input type="text" class="form-control" placeholder="title" id="title" name="title"
+                       ng-model="visit_schedules.session.title"  />
         </div>
 
-        <!--location have to pic from User -->
+        <!--location  -->
         <div class="form-group">
           <select  class="form-control" ng-model="session.location" id="location" ng-options="l.session for l in location">
             <option value="">---pick location ---</option>
           </select>
         </div>
 
-        <!--desc have to pic from User -->
+        <!--desc -->
         <div class="form-group">
           <textarea type="text" class="form-control" placeholder="description" id="desc"
             ng-model="visit_schedules.session.desc"  />
@@ -80,7 +80,7 @@
         </div>
         <br><br> 
         <button class="btn btn-primary" ng-click="save()" >Save</button>
-        <button type="reset" class="btn btn-primary" ng-click="cancel()">Cancel</button>
+        <button type="reset" class="btn btn-primary" ng-click="delete()">delete session</button>
       </form>
     </modal>
   </div>
