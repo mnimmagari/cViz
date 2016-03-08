@@ -6,6 +6,13 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
     function($scope, $http, $routeParams, $location, growl) {
 
 
+$scope.selection = {
+            listGroup: undefined
+        };
+
+        $scope.listGroups = [{
+            date: 'Hyderabad'
+        }];
 
         var id = $routeParams.id;
         // AUtomatically swap between the edit and new mode to reuse the same frontend form
@@ -24,12 +31,19 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
 
 
         var refresh = function() {
-            //         $http.get('/api/v1/secure/visits').success(function(response) {
-            //           $scope.visits.schedule = response;
-            //          var startDate = visits.schedule[0].startDate;
-            //   var endDate = visits.schedule[visits.schedule.length-1].endDate;
+            // $scope.visits =
+             $http.get('/api/v1/secure/visits/' ).success(function(response){
+                console.log(response);
+                        $scope.visits = response;
+                        $scope.visits ="";
+                        console.log($scope.visits);
+                      $scope.schedules = $scope.visits.schedule;  
 
-            // })
+console.log($scope.schedules);
+            var startDate = visits.schedule[0].startDate;
+              var endDate = visits.schedule[visits.schedule.length-1].endDate;
+
+            })
 
             $http.get('/api/v1/secure/visitSchedules').success(function(response) {
 
@@ -165,18 +179,7 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
         }, {
             session: 'Mumbai'
         }];
-        $scope.selection = {
-            listGroup: undefined
-        };
-
-        $scope.listGroups = [{
-            date: 'Hyderabad'
-        }, {
-            date: 'Chennai'
-        }, {
-            date: 'Banglore'
-        }];
-
+        
 
     }
 ]);
@@ -223,3 +226,5 @@ schedulerApp.directive('modal', function() {
         }
     };
 });
+
+

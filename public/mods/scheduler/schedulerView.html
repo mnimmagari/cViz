@@ -25,16 +25,16 @@
 
                 </div>
 
-                <!-- session start date and end date -->
+                <!-- session start time and end time -->
                 <div class="form-group">
                     <div>
                         <h4>Session schedule</h4>
                         <h6>From:</h6>
-                        <input kendo-time-picker ng-model="visit_schedules.session.startTime" type="date" class="form-control" id="startTime" required/>
+                        <input kendo-time-picker ng-model="visit_schedules.session.startTime" type="time" class="form-control" id="startTime" required/>
                     </div>
                     <h6>To:</h6>
                     <div>
-                        <input kendo-time-picker ng-model="visit_schedules.session.endTime" type="date" class="form-control" id="endTime" required/>
+                        <input kendo-time-picker ng-model="visit_schedules.session.endTime" type="time" class="form-control" id="endTime" required/>
                     </div>
 
                 </div>
@@ -53,7 +53,7 @@
 
                 <!--location  -->
                 <div class="form-group">
-                    <select class="form-control" ng-model="session.location" id="location" ng-options="l.session for l in location" required>
+                    <select class="form-control" ng-model="session.location" id="location" ng-options="l.session for l in location" >
             <option value="">---pick location ---</option>
           </select>
                 </div>
