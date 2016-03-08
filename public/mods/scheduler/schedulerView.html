@@ -1,87 +1,89 @@
 <script type="text/javascript" src="/public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-<div class="container" >
-  <div class="page-header">
-    Visit Schedule
-    <div class="sub-header">Enter Your Schedule
-    </div>
-    <br><br>
-    <button ng-click="toggleModal()" class="btn btn-default">Add session</button>
-    <modal title="Session Entry form" visible="showModal">
-      <form role="form">
-      
-        <!--hard code Client name (should be taken from visit form) -->
-        <!-- <div class="form-group">
-          <input type="text" class="form-control" placeholder="Client name" id="client"
-            ng-model="visit_schedules.client"  />
-          </div> -->
-
-        <!--hard code Visit title (should be taken from visit form)-->
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="visit title" id="visit" name="visit"
-            ng-model="visit_schedules.visit"  />
-          </div>
-
-        <!-- session start date and end date -->
-        <div class="form-group">
-          <div>
-            <h4>Session schedule</h4>
-            <h6>From:</h6>
-            <input kendo-time-picker ng-model="visit_schedules.session.startTime" type="date" class="form-control" id="startDate" required/>
-          </div>
-          <h6>To:</h6>
-          <div>
-            <input kendo-time-picker ng-model="visit_schedules.session.endTime" type="date" class="form-control" id="endDate" ng-change='checkErr(startDate,endDate)' required/>
-          </div>
-          <span>{{errMessage}}</span>
+<div class="container">
+    <div class="page-header">
+        Visit Schedule
+        <div class="sub-header">Enter Your Schedule
         </div>
 
-        <!-- session type -->
-        <div class="form-group">
-          <select  class="form-control"  id="type" ng-model="visit_schedules.session.type" ng-options="t.session for t in type ">
+        <div ng-repeat="list in listGroups">
+            <label for="{{ list.date }}"></label>
+            <button ng-click="toggleModal()" class="btn btn-default" ng-model="selection.listGroup" name="listGroups">Add session {{ list.date }}</button>
+        </div>
+
+        <br><br>
+        <modal title="Session Entry form" visible="showModal">
+            <form role="form">
+
+                <!--hard code Client name (should be taken from visit form) -->
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Client name" id="client" ng-model="visit_schedules.client" />
+                </div>
+
+                <!--hard code Visit title (should be taken from visit form)-->
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="visit title" id="visit" name="visit" ng-model="visit_schedules.visit" ng-minlength="4" ng-maxlength="8" required/>
+
+                </div>
+
+                <!-- session start date and end date -->
+                <div class="form-group">
+                    <div>
+                        <h4>Session schedule</h4>
+                        <h6>From:</h6>
+                        <input kendo-time-picker ng-model="visit_schedules.session.startTime" type="date" class="form-control" id="startTime" required/>
+                    </div>
+                    <h6>To:</h6>
+                    <div>
+                        <input kendo-time-picker ng-model="visit_schedules.session.endTime" type="date" class="form-control" id="endTime" required/>
+                    </div>
+
+                </div>
+
+                <!-- session type -->
+                <div class="form-group">
+                    <select class="form-control" id="type" ng-model="visit_schedules.session.type" ng-options="t.session for t in type ">
             <option value="">---select session type---</option>
           </select>
-        </div>
+                </div>
 
-        <!--title  -->
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="title" id="title" name="title"
-                       ng-model="visit_schedules.session.title"  />
-        </div>
+                <!--title  -->
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="title" id="title" name="title" ng-model="visit_schedules.session.title" />
+                </div>
 
-        <!--location  -->
-        <div class="form-group">
-          <select  class="form-control" ng-model="session.location" id="location" ng-options="l.session for l in location">
+                <!--location  -->
+                <div class="form-group">
+                    <select class="form-control" ng-model="session.location" id="location" ng-options="l.session for l in location" required>
             <option value="">---pick location ---</option>
           </select>
-        </div>
+                </div>
 
-        <!--desc -->
-        <div class="form-group">
-          <textarea type="text" class="form-control" placeholder="description" id="desc"
-            ng-model="visit_schedules.session.desc"  />
-        </div>
+                <!--desc -->
+                <div class="form-group">
+                    <textarea type="text" class="form-control" placeholder="description" id="desc" ng-model="visit_schedules.session.desc" required ng-minlength="2" />
+                </div>
 
-        <!--Supporter have to pic from User -->
-        <h4>supporter</h4>
-        <div class="form-group" ng-class="{ 'has-error': inputctrl.supporter.$touched && inputctrl.supporter.$invalid }">
-          <div class="col-md-4">
-            <div user type="picker" class="form-control" user-model="supporterUser" user-id="supporterId" user-email="supporterEmail" ></div>
-          </div>
-        </div>
-        <br><br>
-        <br>
+                <!--Supporter have to pic from User -->
+                <h4>supporter</h4>
+                <div class="form-group" ng-class="{ 'has-error': inputctrl.supporter.$touched && inputctrl.supporter.$invalid }">
+                    <div class="col-md-4">
+                        <div user type="picker" class="form-control" user-model="supporterUser" user-id="supporterId" user-email="supporterEmail"></div>
+                    </div>
+                </div>
+                <br><br>
+                <br>
 
-        <!--owner have to pic from User-->
-        <h4> owner </h4>
-        <div class="form-group" ng-class="{ 'has-error': inputctrl.owner.$touched && inputctrl.owner.$invalid }">
-          <div class="col-md-4">
-            <div user type="picker" class="form-control" user-model="ownerUser" user-id="ownerId" user-email="ownerEmail" ></div>
-          </div>
-        </div>
-        <br><br> 
-        <button class="btn btn-primary" ng-click="save()" >Save</button>
-        <button type="reset" class="btn btn-primary" ng-click="delete()">delete session</button>
-      </form>
-    </modal>
-  </div>
+                <!--owner have to pic from User-->
+                <h4> owner </h4>
+                <div class="form-group" ng-class="{ 'has-error': inputctrl.owner.$touched && inputctrl.owner.$invalid }">
+                    <div class="col-md-4">
+                        <div user type="picker" class="form-control" user-model="ownerUser" user-id="ownerId" user-email="ownerEmail"></div>
+                    </div>
+                </div>
+                <br><br>
+                <button class="btn btn-primary" ng-click="save()">Save</button>
+                <button type="reset" class="btn btn-primary" ng-click="delete()">delete session</button>
+            </form>
+        </modal>
+    </div>
 </div>

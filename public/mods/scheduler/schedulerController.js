@@ -5,6 +5,8 @@ var schedulerApp = angular.module('scheduler', ['ngFloatingLabels', "kendo.direc
 schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams', '$location', 'growl',
     function($scope, $http, $routeParams, $location, growl) {
 
+
+
         var id = $routeParams.id;
         // AUtomatically swap between the edit and new mode to reuse the same frontend form
         $scope.mode = (id == null ? 'add' : 'edit');
@@ -22,6 +24,12 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
 
 
         var refresh = function() {
+            //         $http.get('/api/v1/secure/visits').success(function(response) {
+            //           $scope.visits.schedule = response;
+            //          var startDate = visits.schedule[0].startDate;
+            //   var endDate = visits.schedule[visits.schedule.length-1].endDate;
+
+            // })
 
             $http.get('/api/v1/secure/visitSchedules').success(function(response) {
 
@@ -85,10 +93,10 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
         }; // create method ends
 
         $scope.delete = function(visit_schedules) {
-            var title = visit_schedules.title;
+            //var title = visit_schedules.session;
             $http.delete('/api/v1/secure/visitSchedules/' + visit_schedules._id).success(function(response) {
                     refresh();
-                    growl.info(parse("visitSchedule [%s]<br/>Deleted successfully", title));
+                    growl.info(parse("visitSchedule [%s]<br/>Deleted successfully"));
                 })
                 .error(function(data, status) {
                     growl.error("Error deleting visitSchedule");
@@ -142,7 +150,7 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
             session: 'floor-walk'
         }];
 
-        
+
         // location field dropdown list
         $scope.location = [{
             session: 'Hyderabad'
@@ -156,6 +164,17 @@ schedulerApp.controller('schedulerController', ['$scope', '$http', '$routeParams
             session: 'Noida'
         }, {
             session: 'Mumbai'
+        }];
+        $scope.selection = {
+            listGroup: undefined
+        };
+
+        $scope.listGroups = [{
+            date: 'Hyderabad'
+        }, {
+            date: 'Chennai'
+        }, {
+            date: 'Banglore'
         }];
 
 
