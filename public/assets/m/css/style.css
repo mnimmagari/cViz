@@ -5,14 +5,14 @@
     position:fixed;
     top:0;
     left:0;
+     height:110px;
    -webkit-transition:0.5s linear all;
    -moz-transition:0.5s linear all;
    -o-transition:0.5s linear all;
    transition:0.5s linear all;
    z-index:10000;
 }
-
-.big {
+/*.big {
   padding-top:60px;
   font-color:white;
     height:110px;
@@ -25,6 +25,46 @@
    height:90px;
     font-size: 20px;
 }
+*/
+div#prof-info {
+  padding-top: 60px;
+}
+div#prof-info .profile-name {
+  font-size: 1.3125em;
+  padding-left: 30px;
+}
+
+
+div#prof-info .profile-pic img {
+    width: 35px;
+    height: 35px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+   
+}
+div#prof-info .profile-desc {
+  font-size: 0.875em;
+  
+  }
+div#prof-info .notifications {
+  top: 7px;
+  left: 35px;
+  position: absolute;
+}
+
+div#prof-info .notifications a {
+  position: absolute;
+}
+
+div#prof-info .notifications img {
+  width: 20px;
+
+}
+
 a,
 a:focus,
 a:hover {
@@ -381,11 +421,6 @@ span.menuName {
     width: 18px;
   }
 }
-
-
-
-/*navbar Styles*/
-
 
 
 /* style for left pull menu */
