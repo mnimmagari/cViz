@@ -1,40 +1,25 @@
 /*header*/
-#header_nav {
-    width:100%;
-    background-color:#F8F8FF;
-    position:fixed;
-    top:0;
-    left:0;
-     height:110px;
-   -webkit-transition:0.5s linear all;
-   -moz-transition:0.5s linear all;
-   -o-transition:0.5s linear all;
-   transition:0.5s linear all;
-   z-index:10000;
-}
-/*.big {
-  padding-top:60px;
-  font-color:white;
-    height:110px;
-    font-size: 30px;
-}
 
-.small {
-   padding-top:60px;
-   font-color:white;
-   height:90px;
-    font-size: 20px;
+#header_nav {
+    width: 100%;
+    background-color: #F8F8FF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 110px;
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+    z-index: 10000;
 }
-*/
 div#prof-info {
-  padding-top: 60px;
+    padding-top: 60px;
 }
 div#prof-info .profile-name {
-  font-size: 1.3125em;
-  padding-left: 30px;
+    font-size: 1.3125em;
+    padding-left: 30px;
 }
-
-
 div#prof-info .profile-pic img {
     width: 35px;
     height: 35px;
@@ -44,27 +29,22 @@ div#prof-info .profile-pic img {
     box-shadow: 0 0 8px rgba(0, 0, 0, .8);
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
     -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
-   
 }
 div#prof-info .profile-desc {
-  font-size: 0.875em;
-  
-  }
+    font-size: 0.875em;
+}
 div#prof-info .notifications {
-  top: 7px;
-  left: 35px;
-  position: absolute;
+    top: 7px;
+    left: 35px;
+    position: absolute;
 }
-
 div#prof-info .notifications a {
-  position: absolute;
+    position: absolute;
 }
-
 div#prof-info .notifications img {
-  width: 20px;
-
+    width: 20px;
 }
-
+/**/
 a,
 a:focus,
 a:hover {

@@ -1,32 +1,34 @@
-<!-- <div scroll id="header_nav" ng-class="navClass">
-</div> -->
-
-
- <ng-switch on="data">
-<div ng-switch-when="true" id="header_nav">
-<div scroll id="prof-info">
- <div class="row">
- <div class="col-xs-1 col-md-1 col-sm-1"> </div>
-        <div class="col-xs-2 col-md-2 col-sm-2"> <div class="profile-pic"><img src="{{user.avatar}}"></div></div>
-      <div class="col-xs-2 col-md-2 col-sm-2">  <div class="profile-name">{{user.name.first}}</div></div>
-      <!-- <div class="col-xs-2 col-md-2 col-sm-2">  <div class="profile-desc">{{user.jobTitle}} {{user.organization}}</div></div> -->
-      <div class="col-xs-2 col-md-2 col-sm-2"><div class="notifications"><img src="/public/assets/m/img/ic/ibox-f.png"></div></div>
+<div scroll ng-model="data">
+</div>
+<ng-switch on="data">
+    <div ng-switch-when="true" id="header_nav">
+        <div id="prof-info">
+            <div class="row">
+                <div class="col-xs-1 col-md-1 col-sm-1"> </div>
+                <div class="col-xs-2 col-md-2 col-sm-2">
+                    <div class="profile-pic"><img src="{{user.avatar}}"></div>
+                </div>
+                <div class="col-xs-2 col-md-2 col-sm-2">
+                    <div class="profile-name">{{user.name.first}}</div>
+                </div>
+                <div class="col-xs-2 col-md-2 col-sm-2">
+                    <div class="notifications"><img src="/public/assets/m/img/ic/ibox-f.png"></div>
+                </div>
+            </div>
         </div>
-</div>
-</div>
+    </div>
 
-<div id="profile-details" ng-switch-when="false">
+    <div id="profile-details" ng-switch-when="false">
         <div class="notifications"><img src="/public/assets/m/img/ic/ibox-f.png"></div>
         <div class="profile-pic"><img src="{{user.avatar}}"></div>
         <div class="profile-name">{{user.name.first}} {{user.name.last}}</div>
         <div class="profile-desc">{{user.jobTitle}} {{user.organization}}</div>
         <div class="profile-location">
-            <img src="/public/assets/m/img/ic/loc.png">
-            You are at
-               <location-picker ng-model="pickedLocation" limit-to="1"></location-picker>
-               <!-- <p ng-if="pickedLocation">{{pickedLocation.name}}</p> -->
+            <img src="/public/assets/m/img/ic/loc.png"> You are at
+            <location-picker ng-model="pickedLocation" limit-to="1"></location-picker>
+            <!-- <p ng-if="pickedLocation">{{pickedLocation.name}}</p> -->
         </div>
-        
+
         <div class="session-overview" ng-hide="!visitStartSuccess">
             <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4 currentSession">
@@ -70,52 +72,47 @@
                 </div>
             </div>
         </div>
+    </div>
+</ng-switch>
+
+
+<div class="container" id="menu">
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-4">
+            <a href="/m/facts/">
+                <div class="menu-circle-icon factsheets"></div>
+                <div class="factsheets-text">FACTSHEETS</div>
+            </a>
         </div>
-
-<!-- </div> -->
- </ng-switch>
-
-    <div class="container" id="menu">
-
-        <div class="container" id="menu">
-        <div class="row">
-            <div class="col-xs-6 col-sm-4 col-md-4">
-                <a href="/m/facts/">
-                    <div class="menu-circle-icon factsheets"></div>
-                    <div class="factsheets-text">FACTSHEETS</div>
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-4">
-                <a href="#">
-                    <div class="menu-circle-icon spoc"></div>
-                    <div class="spoc-text">CONTACT SPOC</div>
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-4">
-                <a href="#/feedback">
-                    <div class="menu-circle-icon feedback"></div>
-                    <div class="feedback-text">FEEDBACK</div>
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-4">
-                <a href="#/contacts">
-                    <div class="menu-circle-icon exec-bio"></div>
-                    <div class="exec-bio-text">EXECUTIVE BIO'S</div>
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-4">
-                <a href="#">
-                    <div class="menu-circle-icon past-visits"></div>
-                    <div class="past-visits-text">PAST VISITS</div>
-                </a>
-            </div>
-            <div class="col-xs-6 col-sm-4 col-md-4">
-                <a href="#">
-                    <div class="menu-circle-icon account-info"></div>
-                    <div class="account-info-text">ACCOUNT INFO</div>
-                </a>
-            </div>
+        <div class="col-xs-6 col-sm-4 col-md-4">
+            <a href="#">
+                <div class="menu-circle-icon spoc"></div>
+                <div class="spoc-text">CONTACT SPOC</div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4">
+            <a href="#/feedback">
+                <div class="menu-circle-icon feedback"></div>
+                <div class="feedback-text">FEEDBACK</div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4">
+            <a href="#/contacts">
+                <div class="menu-circle-icon exec-bio"></div>
+                <div class="exec-bio-text">EXECUTIVE BIO'S</div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4">
+            <a href="#">
+                <div class="menu-circle-icon past-visits"></div>
+                <div class="past-visits-text">PAST VISITS</div>
+            </a>
+        </div>
+        <div class="col-xs-6 col-sm-4 col-md-4">
+            <a href="#">
+                <div class="menu-circle-icon account-info"></div>
+                <div class="account-info-text">ACCOUNT INFO</div>
+            </a>
         </div>
     </div>
-    <div scroll ng-model="data"></div>
-    </div>
+</div>
